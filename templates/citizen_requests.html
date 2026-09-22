@@ -1,0 +1,124 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>My Service Requests - LegalConnect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+
+    <h1>LegalConnect</h1>
+
+    <nav>
+        <a href="/citizen-dashboard">Dashboard</a>
+        <a href="/search-providers">Search Providers</a>
+        <a href="/ai-recommendations">AI Recommendations</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+<main>
+
+    <section>
+
+        <h2>My Service Requests</h2>
+
+        <p>
+            View and track the legal service requests
+            submitted by you.
+        </p>
+
+    </section>
+
+    {% for req in requests %}
+
+    <section>
+
+        <h3>Request #{{ req.id }}</h3>
+
+        <p>
+            <strong>Provider:</strong>
+            {{ req.provider_name }}
+        </p>
+
+        <p>
+            <strong>Provider Type:</strong>
+            {{ req.provider_type }}
+        </p>
+
+        <p>
+            <strong>Service:</strong>
+            {{ req.service_name }}
+        </p>
+
+        <p>
+            <strong>Description:</strong>
+            {{ req.description }}
+        </p>
+
+        <p>
+            <strong>Status:</strong>
+            {{ req.status }}
+        </p>
+
+        <p>
+            <strong>Requested At:</strong>
+            {{ req.requested_at }}
+        </p>
+
+        {% if req.status == "Completed" %}
+
+        <p>
+            <a href="/rate-provider/{{ req.provider_id }}">
+                <button type="button">
+                    Rate Provider
+                </button>
+            </a>
+        </p>
+
+        {% endif %}
+
+    </section>
+
+    {% else %}
+
+    <section>
+
+        <h3>No Service Requests</h3>
+
+        <p>
+            You have not submitted any legal service requests yet.
+        </p>
+
+        <a href="/search-providers">
+            <button type="button">
+                Find a Legal Service Provider
+            </button>
+        </a>
+
+    </section>
+
+    {% endfor %}
+
+</main>
+
+<footer>
+
+    <p>
+        © 2026 LegalConnect | PRJ_320 Mini Project
+    </p>
+
+</footer>
+
+</body>
+
+</html>

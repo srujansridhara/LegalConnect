@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Incentive Points - LegalConnect</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+    <header>
+
+        <h1>LegalConnect</h1>
+
+        <nav>
+            <a href="/provider-dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <section>
+
+            <h2>Provider Incentive Points</h2>
+
+            <p>Track points earned through your activities.</p>
+
+        </section>
+
+
+        <section>
+
+           <h3>Total Points</h3>
+
+<h2>{{ total_points }}</h2>
+
+<h3>Provider Level</h3>
+
+{% if total_points >= 75 %}
+
+<h2>Platinum</h2>
+
+{% elif total_points >= 50 %}
+
+<h2>Gold</h2>
+
+{% elif total_points >= 25 %}
+
+<h2>Silver</h2>
+
+{% else %}
+
+<h2>Bronze</h2>
+
+{% endif %}
+
+        </section>
+
+
+        <section>
+
+            <h3>Incentive Activities</h3>
+
+           <table border="1">
+
+                <tr>
+                    <th>Activity</th>
+                    <th>Points</th>
+                    <th>Date</th>
+                </tr>
+
+                {% for incentive in incentives %}
+
+                <tr>
+
+                    <td>{{ incentive.activity }}</td>
+
+                    <td>{{ incentive.points }}</td>
+
+                    <td>{{ incentive.earned_at }}</td>
+
+                </tr>
+
+                {% endfor %}
+
+            </table>
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © 2026 LegalConnect | PRJ_320 Mini Project
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

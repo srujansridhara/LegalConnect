@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Provider Verification - LegalConnect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>LegalConnect</h1>
+
+    <nav>
+        <a href="/admin-dashboard">Dashboard</a>
+        <a href="/admin-documents">Documents</a>
+        <a href="/admin-requests">Requests</a>
+        <a href="/admin-reports">Reports</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+<main>
+
+    <section>
+
+        <h2>Provider Verification</h2>
+
+        <p>
+            Review registered legal service providers
+            and verify their profiles.
+        </p>
+
+    </section>
+
+    <section>
+
+        <h3>Registered Providers</h3>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Provider Type</th>
+                <th>Specialization</th>
+                <th>Experience</th>
+                <th>Location</th>
+                <th>Status</th>
+            </tr>
+
+            {% for provider in providers %}
+
+            <tr>
+
+                <td>
+                    {{ provider.id }}
+                </td>
+
+                <td>
+                    {{ provider.provider_type }}
+                </td>
+
+                <td>
+                    {{ provider.specialization }}
+                </td>
+
+                <td>
+                    {{ provider.experience }} Years
+                </td>
+
+                <td>
+                    {{ provider.location }}
+                </td>
+
+                <td>
+
+                    <strong>
+                        {{ provider.verification_status }}
+                    </strong>
+
+                    {% if provider.verification_status == "Pending" %}
+
+                    <br><br>
+
+                    <form
+                        method="POST"
+                        action="/verify-provider/{{ provider.id }}"
+                    >
+
+                        <button type="submit">
+                            Verify Provider
+                        </button>
+
+                    </form>
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            {% else %}
+
+            <tr>
+
+                <td colspan="6">
+                    No providers registered.
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        © 2026 LegalConnect | PRJ_320 Mini Project
+    </p>
+
+</footer>
+
+</body>
+
+</html>

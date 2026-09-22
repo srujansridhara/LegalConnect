@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Provider Onboarding - LegalConnect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>LegalConnect</h1>
+
+    <nav>
+        <a href="/provider-dashboard">Dashboard</a>
+        <a href="/provider-profile">Profile</a>
+        <a href="/provider-incentives">Incentives</a>
+        <a href="/provider-requests">Requests</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+<main>
+
+    <section>
+
+        <h2>Provider Onboarding</h2>
+
+        <p>
+            Complete or update your legal service provider
+            profile to connect with citizens.
+        </p>
+
+    </section>
+
+    <section>
+
+        <h3>Professional Details</h3>
+
+        <form method="POST"
+              action="/provider-onboarding">
+
+            <label>Provider Type</label>
+            <br>
+
+            <select name="provider_type" required>
+
+                <option value="">
+                    Select Provider Type
+                </option>
+
+                <option value="Advocate">
+                    Advocate
+                </option>
+
+                <option value="Arbitrator">
+                    Arbitrator
+                </option>
+
+                <option value="Mediator">
+                    Mediator
+                </option>
+
+                <option value="Notary">
+                    Notary
+                </option>
+
+                <option value="Document Writer">
+                    Document Writer
+                </option>
+
+            </select>
+
+            <br><br>
+
+            <label>Specialization</label>
+            <br>
+
+            <input
+                type="text"
+                name="specialization"
+                placeholder="Example: Family Law"
+                required
+            >
+
+            <br><br>
+
+            <label>Experience (Years)</label>
+            <br>
+
+            <input
+                type="number"
+                name="experience"
+                min="0"
+                placeholder="Example: 5"
+                required
+            >
+
+            <br><br>
+
+            <label>Location</label>
+            <br>
+
+            <input
+                type="text"
+                name="location"
+                placeholder="Example: Bengaluru"
+                required
+            >
+
+            <br><br>
+
+            <label>Availability</label>
+            <br>
+
+            <select name="availability" required>
+
+                <option value="Available">
+                    Available
+                </option>
+
+                <option value="Busy">
+                    Busy
+                </option>
+
+            </select>
+
+            <br><br>
+
+            <button type="submit">
+                Save Provider Profile
+            </button>
+
+        </form>
+
+    </section>
+
+    <section>
+
+        <h3>Profile Completion</h3>
+
+        <p>
+            Complete your professional details to help citizens
+            find and connect with you.
+        </p>
+
+        <p>
+            <strong>Verification:</strong>
+            Your profile can be reviewed by the administrator.
+        </p>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        © 2026 LegalConnect | PRJ_320 Mini Project
+    </p>
+
+</footer>
+
+</body>
+
+</html>

@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Provider Dashboard - LegalConnect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>LegalConnect</h1>
+
+    <nav>
+        <a href="/provider-dashboard">Dashboard</a>
+        <a href="/provider-incentives">Incentives</a>
+        <a href="/provider-requests">Service Requests</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section>
+
+        <h2>Provider Dashboard</h2>
+
+        <h3>Welcome, {{ provider.name }}</h3>
+
+        <p>
+            Manage your legal service profile,
+            requests and incentive points.
+        </p>
+
+    </section>
+
+
+    <section>
+
+        <h3>Provider Summary</h3>
+
+        <p>
+            <strong>Current Points:</strong>
+            {{ total_points }}
+        </p>
+
+        <p>
+            <strong>Provider Level:</strong>
+
+            {% if total_points >= 75 %}
+                Platinum
+            {% elif total_points >= 50 %}
+                Gold
+            {% elif total_points >= 25 %}
+                Silver
+            {% else %}
+                Bronze
+            {% endif %}
+
+        </p>
+
+        <p>
+            <strong>Verification Status:</strong>
+            {{ provider.verification_status }}
+        </p>
+
+        <p>
+            <strong>Availability:</strong>
+            {{ provider.availability }}
+        </p>
+
+        <p>
+            <strong>Rating:</strong>
+            {{ provider.rating }}
+        </p>
+
+    </section>
+
+
+    <section>
+
+        <h3>Provider Profile</h3>
+
+        <a href="/provider-onboarding">
+            <button type="button">
+                Complete Profile
+            </button>
+        </a>
+
+        <br><br>
+
+        <a href="/provider-profile">
+            <button type="button">
+                View Provider Profile
+            </button>
+        </a>
+
+    </section>
+
+
+    <section>
+
+        <h3>Documents</h3>
+
+        <p>
+            Upload professional documents for verification.
+        </p>
+
+        <a href="/upload-documents">
+            <button type="button">
+                Upload Documents
+            </button>
+        </a>
+
+    </section>
+
+
+    <section>
+
+        <h3>Service Requests</h3>
+
+        <p>
+            View and manage service requests from citizens.
+        </p>
+
+        <a href="/provider-requests">
+            <button type="button">
+                View Service Requests
+            </button>
+        </a>
+
+    </section>
+
+
+    <section>
+
+        <h3>Incentives</h3>
+
+        <p>
+            Track points earned through your platform activities.
+        </p>
+
+        <a href="/provider-incentives">
+            <button type="button">
+                View Incentive Points
+            </button>
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 LegalConnect | PRJ_320 Mini Project
+    </p>
+
+</footer>
+
+</body>
+
+</html>

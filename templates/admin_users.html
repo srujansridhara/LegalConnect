@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Users - LegalConnect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>LegalConnect Admin</h1>
+
+    <nav>
+        <a href="/admin-dashboard">Dashboard</a>
+        <a href="/admin-providers">Providers</a>
+        <a href="/admin-documents">Documents</a>
+        <a href="/admin-requests">Requests</a>
+        <a href="/admin-users">Users</a>
+        <a href="/admin-reports">Reports</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+<main>
+
+    <section>
+
+        <h2>Registered Users</h2>
+
+        <p>
+            View citizens and legal service providers
+            registered on LegalConnect.
+        </p>
+
+    </section>
+
+    <section>
+
+        <h3>All Users</h3>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Role</th>
+                <th>Registered At</th>
+            </tr>
+
+            {% for user in users %}
+
+            <tr>
+
+                <td>
+                    {{ user.id }}
+                </td>
+
+                <td>
+                    {{ user.name }}
+                </td>
+
+                <td>
+                    {{ user.email }}
+                </td>
+
+                <td>
+                    {{ user.role }}
+                </td>
+
+                <td>
+                    {{ user.created_at }}
+                </td>
+
+            </tr>
+
+            {% else %}
+
+            <tr>
+
+                <td colspan="5">
+                    No registered users found.
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        © 2026 LegalConnect | PRJ_320 Mini Project
+    </p>
+
+</footer>
+
+</body>
+
+</html>

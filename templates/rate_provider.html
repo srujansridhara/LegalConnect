@@ -1,0 +1,138 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Rate Provider - LegalConnect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+
+    <h1>LegalConnect</h1>
+
+    <nav>
+        <a href="/citizen-dashboard">Dashboard</a>
+        <a href="/citizen-requests">My Requests</a>
+        <a href="/search-providers">Search Providers</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+<main>
+
+    <section>
+
+        <h2>Rate Legal Service Provider</h2>
+
+        <p>
+            Share your experience with the legal service provider.
+        </p>
+
+    </section>
+
+    <section>
+
+        <h3>Provider Details</h3>
+
+        <p>
+            <strong>Provider:</strong>
+            {{ provider.name }}
+        </p>
+
+        <p>
+            <strong>Provider Type:</strong>
+            {{ provider.provider_type }}
+        </p>
+
+        <p>
+            <strong>Specialization:</strong>
+            {{ provider.specialization }}
+        </p>
+
+        <p>
+            <strong>Current Rating:</strong>
+            {{ provider.rating }}
+        </p>
+
+    </section>
+
+    <section>
+
+        <h3>Submit Your Rating</h3>
+
+        <form method="POST">
+
+            <label>Rating</label>
+            <br>
+
+            <select name="rating" required>
+
+                <option value="">
+                    Select Rating
+                </option>
+
+                <option value="5">
+                    5 - Excellent
+                </option>
+
+                <option value="4">
+                    4 - Very Good
+                </option>
+
+                <option value="3">
+                    3 - Good
+                </option>
+
+                <option value="2">
+                    2 - Average
+                </option>
+
+                <option value="1">
+                    1 - Poor
+                </option>
+
+            </select>
+
+            <br><br>
+
+            <label>Review</label>
+            <br>
+
+            <textarea
+                name="review"
+                rows="6"
+                placeholder="Write your review..."
+                required
+            ></textarea>
+
+            <br><br>
+
+            <button type="submit">
+                Submit Rating
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        © 2026 LegalConnect | PRJ_320 Mini Project
+    </p>
+
+</footer>
+
+</body>
+
+</html>

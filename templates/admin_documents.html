@@ -1,0 +1,137 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Documents - LegalConnect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>LegalConnect Admin</h1>
+
+    <nav>
+        <a href="/admin-dashboard">Dashboard</a>
+        <a href="/admin-providers">Providers</a>
+        <a href="/admin-documents">Documents</a>
+        <a href="/admin-requests">Requests</a>
+        <a href="/admin-reports">Reports</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+<main>
+
+    <section>
+
+        <h2>Provider Documents</h2>
+
+        <p>
+            Review and verify documents submitted by
+            legal service providers.
+        </p>
+
+    </section>
+
+    <section>
+
+        <h3>Submitted Documents</h3>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Provider</th>
+                <th>Document Name</th>
+                <th>Document Type</th>
+                <th>Status</th>
+            </tr>
+
+            {% for document in documents %}
+
+            <tr>
+
+                <td>
+                    {{ document.id }}
+                </td>
+
+                <td>
+                    {{ document.provider_name }}
+                </td>
+
+                <td>
+                    {{ document.document_name }}
+                </td>
+
+                <td>
+                    {{ document.document_type }}
+                </td>
+
+                <td>
+
+                    <strong>
+                        {{ document.document_status }}
+                    </strong>
+
+                    {% if document.document_status == "Pending" %}
+
+                    <br><br>
+
+                    <form
+                        method="POST"
+                        action="/verify-document/{{ document.id }}"
+                    >
+
+                        <button type="submit">
+                            Verify Document
+                        </button>
+
+                    </form>
+
+                    {% endif %}
+
+                </td>
+
+            </tr>
+
+            {% else %}
+
+            <tr>
+
+                <td colspan="5">
+                    No documents found.
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        © 2026 LegalConnect | PRJ_320 Mini Project
+    </p>
+
+</footer>
+
+</body>
+
+</html>

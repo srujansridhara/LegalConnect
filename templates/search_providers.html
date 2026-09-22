@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Search Providers - LegalConnect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>LegalConnect</h1>
+
+    <nav>
+        <a href="/citizen-dashboard">Dashboard</a>
+        <a href="/ai-recommendations">AI Recommendations</a>
+        <a href="/citizen-requests">My Requests</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section>
+
+        <h2>Find a Legal Service Provider</h2>
+
+        <p>
+            Search for verified legal service providers
+            based on type, specialization and location.
+        </p>
+
+    </section>
+
+
+    <section>
+
+        <h3>Search Providers</h3>
+
+        <form method="GET" action="/search-providers">
+
+            <label>Provider Type</label>
+            <br>
+
+            <select name="provider_type">
+
+                <option value="">All Providers</option>
+                <option value="Advocate">Advocate</option>
+                <option value="Arbitrator">Arbitrator</option>
+                <option value="Mediator">Mediator</option>
+                <option value="Notary">Notary</option>
+                <option value="Document Writer">Document Writer</option>
+
+            </select>
+
+            <br><br>
+
+            <label>Specialization</label>
+            <br>
+
+            <input
+                type="text"
+                name="specialization"
+                placeholder="Example: Family Law"
+            >
+
+            <br><br>
+
+            <label>Location</label>
+            <br>
+
+            <input
+                type="text"
+                name="location"
+                placeholder="Example: Bengaluru"
+            >
+
+            <br><br>
+
+            <button type="submit">
+                Search Providers
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <section>
+
+        <h3>Available Providers</h3>
+
+        {% if providers %}
+
+            {% for provider in providers %}
+
+            <div>
+
+                <h3>{{ provider.name }}</h3>
+
+                <p>
+                    <strong>Provider Type:</strong>
+                    {{ provider.provider_type }}
+                </p>
+
+                <p>
+                    <strong>Specialization:</strong>
+                    {{ provider.specialization }}
+                </p>
+
+                <p>
+                    <strong>Experience:</strong>
+                    {{ provider.experience }} years
+                </p>
+
+                <p>
+                    <strong>Location:</strong>
+                    {{ provider.location }}
+                </p>
+
+                <p>
+                    <strong>Rating:</strong>
+                    {{ provider.rating }}
+                </p>
+
+                <p>
+                    <strong>Verification:</strong>
+                    {{ provider.verification_status }}
+                </p>
+
+                <a href="/request-service/{{ provider.id }}">
+                    <button type="button">
+                        Request Service
+                    </button>
+                </a>
+
+                <hr>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <p>
+                No verified providers found.
+                Try changing your search criteria.
+            </p>
+
+        {% endif %}
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 LegalConnect | PRJ_320 Mini Project
+    </p>
+
+</footer>
+
+</body>
+
+</html>

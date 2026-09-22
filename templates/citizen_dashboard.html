@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Citizen Dashboard - LegalConnect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+
+    <h1>LegalConnect</h1>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section>
+
+        <h2>Citizen Dashboard</h2>
+
+        <p>Welcome to your LegalConnect dashboard.</p>
+
+    </section>
+
+
+    <section>
+
+        <h3>Legal Services</h3>
+
+        <ul>
+            <li>Legal Consultation</li>
+            <li>Dispute Resolution</li>
+            <li>Mediation</li>
+            <li>Notary Services</li>
+            <li>Document Preparation</li>
+        </ul>
+
+    </section>
+
+
+    <section>
+
+        <h3>Quick Actions</h3>
+
+        <p>Find and connect with suitable legal service providers.</p>
+
+        <a href="/search-providers">
+            <button type="button">
+                Search Legal Service Provider
+            </button>
+        </a>
+
+        <br><br>
+
+        <a href="/ai-recommendations">
+            <button type="button">
+                AI Recommendations
+            </button>
+        </a>
+
+        <br><br>
+
+        <a href="/citizen-requests">
+            <button type="button">
+                My Service Requests
+            </button>
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 LegalConnect | PRJ_320 Mini Project
+    </p>
+
+</footer>
+
+</body>
+
+</html>

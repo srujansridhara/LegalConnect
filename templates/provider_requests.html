@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Service Requests - LegalConnect</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+    <header>
+
+        <h1>LegalConnect</h1>
+
+        <nav>
+            <a href="/provider-dashboard">Dashboard</a>
+            <a href="/provider-incentives">Incentives</a>
+            <a href="/logout">Logout</a>
+        </nav>
+
+    </header>
+
+
+    <main>
+
+        <section>
+
+            <h2>Service Requests</h2>
+
+            <p>
+                View service requests received from citizens.
+            </p>
+
+        </section>
+
+
+        <section>
+
+            {% for req in requests %}
+
+            <div>
+
+                <h3>Request #{{ req.id }}</h3>
+
+                <p>
+                    <strong>Citizen:</strong>
+                    {{ req.citizen_name }}
+                </p>
+
+                <p>
+                    <strong>Service:</strong>
+                    {{ req.service_name }}
+                </p>
+
+                <p>
+                    <strong>Description:</strong>
+                    {{ req.description }}
+                </p>
+
+                <p>
+                    <strong>Status:</strong>
+                    {{ req.status }}
+                </p>
+
+                <p>
+                    <strong>Requested At:</strong>
+                    {{ req.requested_at }}
+                </p>
+
+
+                {% if req.status == "Pending" %}
+
+                <form method="POST" action="/update-request/{{ req.id }}/Accepted">
+
+                    <button type="submit">
+                        Accept Request
+                    </button>
+
+                </form>
+
+                <br>
+
+                <form method="POST" action="/update-request/{{ req.id }}/Rejected">
+
+                    <button type="submit">
+                        Reject Request
+                    </button>
+
+                </form>
+
+
+                {% elif req.status == "Accepted" %}
+
+                <form method="POST" action="/update-request/{{ req.id }}/Completed">
+
+                    <button type="submit">
+                        Complete Service
+                    </button>
+
+                </form>
+
+
+                {% endif %}
+
+                <hr>
+
+            </div>
+
+            {% else %}
+
+            <p>
+                No service requests found.
+            </p>
+
+            {% endfor %}
+
+        </section>
+
+    </main>
+
+
+    <footer>
+
+        <p>
+            © 2026 LegalConnect | PRJ_320 Mini Project
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

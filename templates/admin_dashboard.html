@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Dashboard - LegalConnect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>LegalConnect</h1>
+
+    <nav>
+        <a href="/">Home</a>
+        <a href="/admin-dashboard">Dashboard</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section>
+
+        <h2>Admin Dashboard</h2>
+
+        <p>
+            Manage and monitor the LegalConnect platform.
+        </p>
+
+    </section>
+
+
+    <section>
+
+        <h3>Provider Verification</h3>
+
+        <p>
+            Review legal service providers and their
+            verification documents.
+        </p>
+
+        <a href="/admin-providers">
+            <button type="button">
+                View Providers
+            </button>
+        </a>
+
+        <br><br>
+
+        <a href="/admin-documents">
+            <button type="button">
+                View Documents
+            </button>
+        </a>
+
+    </section>
+
+
+    <section>
+
+        <h3>Service Requests</h3>
+
+        <p>
+            Monitor service requests submitted by citizens.
+        </p>
+
+        <a href="/admin-requests">
+            <button type="button">
+                View Requests
+            </button>
+        </a>
+
+    </section>
+
+
+    <section>
+
+        <h3>Users</h3>
+
+        <p>
+            View registered citizens and legal service providers.
+        </p>
+
+        <a href="/admin-users">
+            <button type="button">
+                View Users
+            </button>
+        </a>
+
+    </section>
+
+
+    <section>
+
+        <h3>Reports</h3>
+
+        <p>
+            View platform statistics and activity reports.
+        </p>
+
+        <a href="/admin-reports">
+            <button type="button">
+                View Reports
+            </button>
+        </a>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 LegalConnect | PRJ_320 Mini Project
+    </p>
+
+</footer>
+
+</body>
+
+</html>

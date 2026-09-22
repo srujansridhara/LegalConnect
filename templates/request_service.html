@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Request Legal Service - LegalConnect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>LegalConnect</h1>
+
+    <nav>
+        <a href="/citizen-dashboard">Dashboard</a>
+        <a href="/search-providers">Search Providers</a>
+        <a href="/ai-recommendations">AI Recommendations</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+
+<main>
+
+    <section>
+
+        <h2>Request Legal Service</h2>
+
+        <p>
+            Send a service request to the selected
+            legal service provider.
+        </p>
+
+    </section>
+
+
+    <section>
+
+        <h3>Selected Provider</h3>
+
+        <p>
+            <strong>Provider:</strong>
+            {{ provider.name }}
+        </p>
+
+        <p>
+            <strong>Provider Type:</strong>
+            {{ provider.provider_type }}
+        </p>
+
+        <p>
+            <strong>Specialization:</strong>
+            {{ provider.specialization }}
+        </p>
+
+        <p>
+            <strong>Location:</strong>
+            {{ provider.location }}
+        </p>
+
+        <p>
+            <strong>Rating:</strong>
+            {{ provider.rating }}
+        </p>
+
+        <p>
+            <strong>Availability:</strong>
+            {{ provider.availability }}
+        </p>
+
+    </section>
+
+
+    <section>
+
+        <h3>Service Request Details</h3>
+
+        <form method="POST">
+
+            <label>Select Legal Service</label>
+            <br>
+
+            <select name="service_id" required>
+
+                <option value="">
+                    Select a service
+                </option>
+
+                {% for service in services %}
+
+                <option value="{{ service.id }}">
+                    {{ service.service_name }}
+                </option>
+
+                {% endfor %}
+
+            </select>
+
+            <br><br>
+
+            <label>Describe Your Requirement</label>
+            <br>
+
+            <textarea
+                name="description"
+                rows="6"
+                placeholder="Describe your legal requirement..."
+                required
+            ></textarea>
+
+            <br><br>
+
+            <button type="submit">
+                Submit Service Request
+            </button>
+
+        </form>
+
+    </section>
+
+</main>
+
+
+<footer>
+
+    <p>
+        © 2026 LegalConnect | PRJ_320 Mini Project
+    </p>
+
+</footer>
+
+</body>
+
+</html>

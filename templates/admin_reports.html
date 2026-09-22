@@ -1,0 +1,132 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Reports - LegalConnect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>LegalConnect Admin</h1>
+
+    <nav>
+        <a href="/admin-dashboard">Dashboard</a>
+        <a href="/admin-providers">Providers</a>
+        <a href="/admin-documents">Documents</a>
+        <a href="/admin-requests">Requests</a>
+        <a href="/admin-users">Users</a>
+        <a href="/admin-reports">Reports</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+<main>
+
+    <section>
+
+        <h2>Reports & Statistics</h2>
+
+        <p>
+            View important statistics of the
+            LegalConnect platform.
+        </p>
+
+    </section>
+
+    <section>
+
+        <h3>Platform Statistics</h3>
+
+        <table>
+
+            <tr>
+                <th>Metric</th>
+                <th>Value</th>
+            </tr>
+
+            <tr>
+                <td>Total Users</td>
+                <td>{{ total_users }}</td>
+            </tr>
+
+            <tr>
+                <td>Total Providers</td>
+                <td>{{ total_providers }}</td>
+            </tr>
+
+            <tr>
+                <td>Verified Providers</td>
+                <td>{{ verified_providers }}</td>
+            </tr>
+
+            <tr>
+                <td>Total Citizens</td>
+                <td>{{ total_citizens }}</td>
+            </tr>
+
+            <tr>
+                <td>Total Service Requests</td>
+                <td>{{ total_requests }}</td>
+            </tr>
+
+            <tr>
+                <td>Completed Services</td>
+                <td>{{ completed_requests }}</td>
+            </tr>
+
+            <tr>
+                <td>Total Incentive Points</td>
+                <td>{{ total_points }}</td>
+            </tr>
+
+            <tr>
+                <td>Total Ratings</td>
+                <td>{{ total_ratings }}</td>
+            </tr>
+
+        </table>
+
+    </section>
+
+    <section>
+
+        <h3>Platform Overview</h3>
+
+        <p>
+            LegalConnect currently supports citizens,
+            legal service providers and administrators.
+        </p>
+
+        <p>
+            The platform manages provider verification,
+            service requests, ratings and incentive points.
+        </p>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        © 2026 LegalConnect | PRJ_320 Mini Project
+    </p>
+
+</footer>
+
+</body>
+
+</html>

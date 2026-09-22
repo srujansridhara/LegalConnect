@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Admin Requests - LegalConnect</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<header>
+
+    <h1>LegalConnect Admin</h1>
+
+    <nav>
+        <a href="/admin-dashboard">Dashboard</a>
+        <a href="/admin-providers">Providers</a>
+        <a href="/admin-documents">Documents</a>
+        <a href="/admin-requests">Requests</a>
+        <a href="/admin-users">Users</a>
+        <a href="/admin-reports">Reports</a>
+        <a href="/logout">Logout</a>
+    </nav>
+
+</header>
+
+<main>
+
+    <section>
+
+        <h2>Service Requests</h2>
+
+        <p>
+            Monitor service requests submitted by citizens
+            and their current status.
+        </p>
+
+    </section>
+
+    <section>
+
+        <h3>All Service Requests</h3>
+
+        <table>
+
+            <tr>
+                <th>ID</th>
+                <th>Citizen</th>
+                <th>Provider</th>
+                <th>Service</th>
+                <th>Description</th>
+                <th>Status</th>
+                <th>Requested At</th>
+            </tr>
+
+            {% for req in requests %}
+
+            <tr>
+
+                <td>
+                    {{ req.id }}
+                </td>
+
+                <td>
+                    {{ req.citizen_name }}
+                </td>
+
+                <td>
+                    {{ req.provider_name }}
+                </td>
+
+                <td>
+                    {{ req.service_name }}
+                </td>
+
+                <td>
+                    {{ req.description }}
+                </td>
+
+                <td>
+                    <strong>
+                        {{ req.status }}
+                    </strong>
+                </td>
+
+                <td>
+                    {{ req.requested_at }}
+                </td>
+
+            </tr>
+
+            {% else %}
+
+            <tr>
+
+                <td colspan="7">
+                    No service requests found.
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </section>
+
+</main>
+
+<footer>
+
+    <p>
+        © 2026 LegalConnect | PRJ_320 Mini Project
+    </p>
+
+</footer>
+
+</body>
+
+</html>
