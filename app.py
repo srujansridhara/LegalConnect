@@ -4,8 +4,7 @@ from werkzeug.utils import secure_filename
 import mysql.connector
 import os
 app = Flask(__name__)
-app.secret_key = "legalconnect-secret-key"
-
+app.secret_key = os.getenv("SECRET_KEY", "legalconnect-secret-key")
 
 def admin_required():
     if "user_id" not in session:
