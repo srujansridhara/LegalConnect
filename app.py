@@ -28,13 +28,31 @@ def citizen_required():
     if session.get("role") != "citizen":
         return False
     return True
+from urllib.parse import urlparse
+
 def get_db_connection():
-    connection = mysql.connector.connect(
-        host=os.getenv("DB_HOST", "localhost"),
-        user=os.getenv("DB_USER", "root"),
-        password=os.getenv("DB_PASSWORD", "root"),
-        database=os.getenv("DB_NAME", "legalconnect")
-    )
+
+    database_url = os.getenv("MYSQL_PUBLIC_URL")
+
+    if database_url:
+        url = urlparse(database_url)
+
+        connection = mysql.connector.connect(
+            host=url.hostname,
+            port=url.port,
+            user=url.username,
+            password=url.password,
+            database=url.path.lstrip("/")
+        )
+
+    else:
+        connection = mysql.connector.connect(
+            host=os.getenv("DB_HOST", "localhost"),
+            user=os.getenv("DB_USER", "root"),
+            password=os.getenv("DB_PASSWORD", "root"),
+            database=os.getenv("DB_NAME", "legalconnect")
+        )
+
     return connection
 def get_db_connection():
     connection = mysql.connector.connect(
